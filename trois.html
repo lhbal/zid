@@ -1,1 +1,348 @@
 
+<html>
+    <head>
+
+
+   <style type="text/css">
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html, body, #content {
+                width: 100%;
+                height: 100%;
+            }
+
+            #content {
+                background-color: #000;
+            }
+
+            .no-flash-text {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 50%;
+                margin: auto;
+                padding: 0;
+                height: 80px;
+                color: #fff;
+                font-size: 20px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+            }
+            @media all and (max-width: 1000px) {
+                .no-flash-text {
+                    font-size: 16px;
+                    width: 80%;
+                }
+            }
+            @media all and (max-width: 500px) {
+                .no-flash-text {
+                    font-size: 12px;
+                    width: 90%;
+                }
+            }
+            .no-flash-text h3 {
+                margin-bottom: 10px;
+            }
+            .no-flash-text a {
+                color: #de2525;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .no-flash-text a:hover {
+                color: #dedede;
+            }
+            .subscribe-annotation {
+                position: absolute;
+                top:  10px;
+                left: 30px;
+                font-size: 12px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            .subscribe-annotation:hover {
+                cursor: pointer;
+                text-decoration: underline;
+                border: 1px solid gray;
+                border-radius: 5px;
+                border-collapse: collapse;
+            }
+            .subscribe-annotation .close {
+              display: none;
+              border: 1px solid gray;
+              border-radius: 6px 6px 6px 6px;/* equal to line height ? */
+              bottom: -10px;    /*  (-1)*parent.fontSize + this.paddingTop */
+              font-size: 9px;
+              line-height: 6px;
+              padding: 2px;
+              position: absolute;
+              right: -7px; /* right padding of parent +1px */
+            }
+            .subscribe-annotation:hover .close {
+                display:block;
+            }
+
+            .subscribe-annotation *, .subscribe-annotation a:visited {
+                color: yellow;
+                background-color: transparent;
+            }
+            #subscribe{
+                display: none;
+                width: 220px;
+                height: 220px;
+                position: absolute;
+                top: 50%; left: 50%;
+                margin-top: -110px;
+                margin-left: -110px;
+                text-align: center;
+            }
+            #subscribe *, #subscribe:visited{
+                display: block;
+                width: 100%;
+                color: yellow;
+                background-color: transparent;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .notavailable  {
+                display: none;
+            }
+            .notavailable .button.red {
+                display: block;
+                padding: 10px 60px;
+            }
+            .notavailable .ui-title {
+                font-weight: bold;
+            }
+            .notavailable .b-page-404__head {
+                margin: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                width: 280px;
+                height: 230px;
+                font-family: Arial, sans-serif;
+            }
+            .notavailable .b-page-404__head_img {
+                padding: 10px;
+                width: 150px;
+            }
+            .b-page-404__head_txt {
+                font-size: 20px;
+            }
+            .notavailable .b-page-404__head:after {
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: #c7c7c7;
+                position: absolute;
+                display: block;
+                top: 455px;
+                left: 0;
+                right: 0;
+            }
+            .yellow {
+                font-size: 20px;
+                padding-top: 10%;
+                color: white;
+            }
+
+
+#if2 {
+    width: 100px;
+    height: 100px;  
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+
+
+        </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>My JWPlayer</title>
+    <script src="//ssl.p.jwpcdn.com/player/v/7.7.0/jwplayer.js"></script>
+<script src="//cdn.streamroot.io/jw7-hlsjs-provider/stable/jw7-hlsjs-provider.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+     function changeVideo(filename) {
+     jwplayer("video").setup({
+       file: filename,
+       autostart: true,
+        height: 360,
+        width: 640,
+
+
+
+p2pConfig:{ streamrootKey: 'YOUR_APP_CLIENTID' },
+
+    // optional hls.js configuration
+    hlsjsConfig:{}, 
+
+    });
+
+    jwplayer('video').load();
+}
+     </script>
+
+
+
+
+    
+    <link rel="me" href="https://www.blogger.com/profile/10903645065744090052" />
+<link rel="openid.server" href="https://www.blogger.com/openid-server.g" />
+</head>
+
+    <body>
+
+
+
+<div id="video">
+
+<div id="streamroot"></div>
+
+   
+   
+</div>
+
+
+<script>
+
+
+
+
+
+(function() {
+    var cors_api_host = 'cors-anywhere.herokuapp.com';
+    var cors_api_url = 'https://' + cors_api_host + '/';
+    var slice = [].slice;
+    var origin = window.location.protocol + '//' + window.location.host;
+    var open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        var args = slice.call(arguments);
+        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
+        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
+            targetOrigin[1] !== cors_api_host) {
+            args[1] = cors_api_url + args[1];
+        }
+        return open.apply(this, args);
+    };
+})();
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  jwplayer.key = "dWwDdbLI0ul1clbtlw+4/UHPxlYmLoE9Ii9QEw=="
+  jwplayer('streamroot').setup({    
+    file: "http://fdmd.shahid.net/media/fd/2fda1d3fd7ab453cad983544e8ed70e4/fd03a5f831314b859359ea1816ca9859/bf887c32dd6c452689120fa7bb84f491/3000036536-txmhda_asrar-angel--1--ep---5.mpegts/playlist-2595b4084f939e7ac7033f4063a1829567e0a774.m3u8",
+
+
+
+
+        
+                        height: "100%",
+      			width: "100%",
+          
+ 
+
+
+    p2pConfig:{ streamrootKey: 'YOUR_APP_CLIENTID' },
+
+    // optional hls.js configuration
+    hlsjsConfig:{}, 
+  });
+</script>
+
+
+
+   
+<iframe id="if2" src="http://www.guguncube.com">
+</iframe>
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document).ready(function(e) {
+    setTimeout(function() {
+        $('#if2').hide();
+    }, 6000);
+});
+</script>
+
+
+
+
+    </body>
+    </html>
